@@ -42,7 +42,7 @@ body{
     width: 150px;
     height: 24px;
     margin-left: 360px;
-    background: linear-gradient(90deg,white,black);
+    background: crimson;
 }
 .wrapper::-webkit-scrollbar{
     display: none;
