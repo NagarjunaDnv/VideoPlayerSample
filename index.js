@@ -36,7 +36,11 @@ function setProgressBarWidth(){
 
 function toggle(){
     let btn= document.getElementById("play-pause-button");
-    if(videoPlayer.paused){
+    if(videoPlayer.ended){
+        btn.innerHTML=`<i class="fas fa-play">`
+        videoPlayer.pause()
+    }
+    else if(videoPlayer.paused){
         btn.innerHTML=`<i class="fas fa-pause"></i>`
         videoPlayer.play()
     }
