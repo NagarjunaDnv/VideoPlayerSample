@@ -55,8 +55,14 @@ function calculateMargin(currentTime){
 
 function videoProgressHandler(){
     wrapper.addEventListener('mousedown',()=>{
+
+        let isPlaying=false
         if(!videoPlayer.paused){
+            isPlaying=true
             toggle()
+        }
+        else{
+            isPlaying=false
         }
         arr.length=0
         document.onmousemove=function(e){
@@ -65,7 +71,7 @@ function videoProgressHandler(){
         document.onmouseup=function(e){
             console.log(e)
             document.onmousemove=null
-            if(videoPlayer.paused){
+            if(isPlaying){
                 toggle()
             }
         }
