@@ -4,7 +4,7 @@ var videoPlayer;
 var wrapper;
 var width;
 var scroll_left=0;
-var scale=30;
+var scale=5;
 var arr=[];
 function initialize(){
     videoPlayer=document.getElementById('v-mp4');
