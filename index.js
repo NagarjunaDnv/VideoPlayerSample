@@ -98,21 +98,13 @@ function addTimers(){
     const n=parseInt(effective/scale)
     console.log(n)
     for(i=0;i<n;i++){
-        if(i==0){
-            let timer=document.createElement('div')
-            const time=`14:59:55`
-            timer.innerHTML=time
-            timer.className='time'
-            timer.style.left=360+((0.6*150)/scale)+'px'
-            wrapper.appendChild(timer)
-        }
-        else{
-            let timer=document.createElement('div')
-            timer.innerHTML=getTime(i)
-            timer.className='time'
-            timer.style.left=360+((0.6*150)/scale)+150*i+'px'
-            wrapper.appendChild(timer)
-        }
+        let timer=document.createElement('div')
+        timer.innerHTML=getTime(i)
+        timer.className='time'
+        const dist=360+((0.6*150)/scale)+150*i
+        timer.style.left=dist+'px'
+        wrapper.appendChild(timer)
+        addLine(dist)
     }
 }
 
@@ -120,4 +112,11 @@ function getTime(i){
     var dt = new Date("May 13, 2020 14:59:55");
     dt.setSeconds( dt.getSeconds() + scale*i );
     return `${dt.getHours()}:${ dt.getMinutes()<10 ? '0'+dt.getMinutes() : dt.getMinutes() }:${dt.getSeconds()<10 ? '0'+dt.getSeconds() : dt.getSeconds()}`
+}
+
+function addLine(dist){
+    let line=document.createElement('div')
+    line.className='line'
+    line.style.left=dist+'px'
+    wrapper.appendChild(line)
 }

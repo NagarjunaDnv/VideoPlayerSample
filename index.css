@@ -50,5 +50,13 @@ body{
 .time{
     color: white;
     position: absolute;
-    bottom: 30;
+    bottom: 36px;
+    transform: translateX(-50%);
+}
+.line{
+    background: #ffffff;
+    position: absolute;
+    bottom:24px ;
+    height: 10px;
+    width: 1px;
 }
