@@ -151,4 +151,11 @@ function removeElementsByClass(className){
     while(elements.length > 0){
         elements[0].parentNode.removeChild(elements[0]);
     }
-}``
+}
+function onVideoEnded(){
+    alert('Video Ended')
+    toggle()
+    videoPlayer.currentTime=0
+    scroll_left=0
+    wrapper.scrollLeft=0
+}

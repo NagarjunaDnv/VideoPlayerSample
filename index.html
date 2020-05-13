@@ -5,7 +5,7 @@
     </head>
     <body>
         <div class="container" id="v-player">
-            <video width="720px" height="480px" id="v-mp4">
+            <video width="720px" height="480px" id="v-mp4" onended="onVideoEnded()">
                 <source src="./video.mp4" type="video/mp4">
             </video>
             <div class="video-controls" id="v-controls">
