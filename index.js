@@ -1,14 +1,17 @@
-document.addEventListener("DOMContentLoaded", function() { initialize(); }, false);
+document.addEventListener("DOMContentLoaded", function() { initialize() }, false);
 
 var videoPlayer;
 var wrapper;
+var progressBar;
 var width;
 var scroll_left=0;
 var scale=5;
 var arr=[];
+
 function initialize(){
     videoPlayer=document.getElementById('v-mp4');
     wrapper=document.getElementById('wrapper');
+    progressBar=document.getElementById('progress')
     videoPlayer.onloadedmetadata = function() {
         setProgressBarWidth();
     };
@@ -67,6 +70,18 @@ function videoProgressHandler(){
             }
         }
     },true)
+    progress.addEventListener('wheel',(e)=>{
+        if(e.deltaY>0){
+            scale=scale+5
+            setProgressBarWidth()
+        }
+        else{
+            scale=scale-5
+            if(scale>=5){
+                setProgressBarWidth()
+            }
+        }
+    },false)
 }
 
 function moveProgressBarAndVideo(distFromLeft){
@@ -93,6 +108,8 @@ function setCurrentTime(){
 }
 
 function addTimers(){
+    removeElementsByClass('time');
+    removeElementsByClass('line');
     const totalDuration=videoPlayer.duration
     const effective=totalDuration-0.600
     const n=parseInt(effective/scale)
@@ -120,3 +137,10 @@ function addLine(dist){
     line.style.left=dist+'px'
     wrapper.appendChild(line)
 }
+
+function removeElementsByClass(className){
+    var elements = document.getElementsByClassName(className);
+    while(elements.length > 0){
+        elements[0].parentNode.removeChild(elements[0]);
+    }
+}``
