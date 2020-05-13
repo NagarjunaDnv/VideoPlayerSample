@@ -76,8 +76,8 @@ function videoProgressHandler(){
             setProgressBarWidth()
         }
         else{
-            scale=scale-5
-            if(scale>=5){
+            if(scale-5>=5){
+                scale=scale-5
                 setProgressBarWidth()
             }
         }
