@@ -27,7 +27,7 @@ function setProgressBarWidth(){
     //Each division width is 150px
     //scale in seconds
     console.log(videoPlayer.duration)
-    width = ( videoPlayer.duration / scale ) * 150;
+    width = ( videoPlayer.duration+900 / scale ) * 150;
     let progressBar= document.getElementById('progress')
     progressBar.style.width=width+'px'
     console.log(width)
@@ -72,8 +72,10 @@ function videoProgressHandler(){
     },true)
     progress.addEventListener('wheel',(e)=>{
         if(e.deltaY>0){
-            scale=scale+5
-            setProgressBarWidth()
+            if(scale+5<=900){
+                scale=scale+5
+                setProgressBarWidth()
+            }
         }
         else{
             if(scale-5>=5){
@@ -110,7 +112,7 @@ function setCurrentTime(){
 function addTimers(){
     removeElementsByClass('time');
     removeElementsByClass('line');
-    const totalDuration=videoPlayer.duration
+    const totalDuration=videoPlayer.duration+900
     const effective=totalDuration-0.600
     const n=parseInt(effective/scale)
     console.log(n)
